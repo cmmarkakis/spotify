@@ -20,6 +20,7 @@ def get_all_playlists(username):
     '''
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
     all_playlists = {}
 
     playlists = sp.user_playlists(username)
@@ -44,24 +45,22 @@ def get_all_tracks(playlist_id):
 
     Returns
     -------
-    Prints all the tracks of a given playlist
+    A list of dictionaries representing each track in a playlist
 
     '''
+    client_credentials_manager = SpotifyClientCredentials()
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
     playlist_tracks = sp.playlist_tracks(playlist_id)
-    for track in playlist_track['items']:
-        print()
-        print(track['album']['name'])
 
+    all_results = []
 
-def get_all_tracks(playlist):
-    results = sp.current_user_playlists(username) #got from spotipy documentation: https://readthedocs.org/projects/spotipy/downloads/pdf/latest/
-    if playlist in results['items']:
-        for item in results['item']: #looking through every item in the data we get from api
-            playlist_id = results['item']['id']
-            playlist_tracks = sp.playlist_tracks(playlist_id)
-            return results['item']['name'] + playlist_tracks
-    else:
-        print('Playlist not found')
+    for track in playlist_tracks['items']:
+        song_name = track['track']['name']
+        artist_name = track['track']['artists'][0]['name']
+        all_results.append({'song_name':song_name, 'artist_name':artist_name})
+
+    return all_results
 
 if __name__ == "__main__":
-    print('write functions')
+    print('execute')
