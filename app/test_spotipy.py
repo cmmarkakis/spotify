@@ -70,4 +70,4 @@ def get_all_tracks(playlist_id):
     return all_results
 
 if __name__ == "__main__":
-    print(get_playlist_titles(None))
+    print(get_all_playlists(None))

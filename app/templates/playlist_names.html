@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spotify Playlist</title>
+</head>
+
+<body>
+    <div>
+        <p>{{ message }}</p>
+
+        <p>{{ playlist_names }}</p>
+        <p>My Playlists:</p>
+        <ul>
+            {% for playlist in playlist_names %}
+            <li>{{ playlist }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
