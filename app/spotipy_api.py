@@ -21,12 +21,12 @@ def get_all_playlists(username):
     client_credentials_manager = SpotifyClientCredentials()
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-    all_playlists = {}
+    all_playlists = []
 
     playlists = sp.user_playlists('cmarkz133')
     while playlists:
         for i, playlist in enumerate(playlists['items']):
-            all_playlists.update({playlist['uri']:playlist['name']})
+            all_playlists.append({'uri': playlist['uri'], 'name':playlist['name']})
         if playlists['next']:
             playlists = sp.next(playlists)
         else:
