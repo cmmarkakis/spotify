@@ -1,5 +1,3 @@
-import sys
-sys.path.insert(0, '/Users/Christina/projects/spotify') 
 from test_spotipy import get_all_playlists
 from test_spotipy import get_all_tracks
 from flask import Flask, render_template
@@ -16,6 +14,7 @@ def hello_world():
 
 @app.route('/test') #trying to test using instructions from this site, but it isn't working: https://www.techiediaries.com/flask-tutorial-templates/
 def test():
+    import pdb; pdb.set_trace()
     return render_template("index.html", message="Hello Flask!", contacts = ['c1', 'c2', 'c3', 'c4', 'c5'])
 
 # @app.route('/tracks')
