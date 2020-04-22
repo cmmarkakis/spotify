@@ -23,8 +23,7 @@ def get_all_playlists(username):
 
     all_playlists = {}
 
-    playlists = sp.user_playlists(username)
-
+    playlists = sp.user_playlists('cmarkz133')
     while playlists:
         for i, playlist in enumerate(playlists['items']):
             all_playlists.update({playlist['uri']:playlist['name']})
@@ -33,6 +32,14 @@ def get_all_playlists(username):
         else:
             playlists = None
     return all_playlists
+
+def get_playlist_titles(playlists):
+    playlist_titles = []
+    playlists = get_all_playlists(None)
+    for value in playlists.values():
+        playlist_titles.append(value)
+    #playlist has playlistid as the key and playlist name as the value
+    return playlist_titles
 
 
 def get_all_tracks(playlist_id):
@@ -63,4 +70,4 @@ def get_all_tracks(playlist_id):
     return all_results
 
 if __name__ == "__main__":
-    print('execute')
+    print(get_playlist_titles(None))
